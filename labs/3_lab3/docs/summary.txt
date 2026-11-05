@@ -1,0 +1,3 @@
+AI Agents & Agentic Workflows Course
+
+Led by Dr. Elena Karamer at Braude College in Karmiel, this course provides students with a strong foundation in AI Agents, Agentic Workflows, Retrieval-Augmented Generation (RAG), and intelligent decision-making frameworks such as JEV. The course combines theoretical knowledge with practical skills, preparing students to design and develop advanced AI-driven solutions.
