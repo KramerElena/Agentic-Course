@@ -14,83 +14,126 @@
 
 Welcome! This repository contains interactive Python notebooks for learning how to build with language models and AI agents. Follow the steps below to set up the project and run your first lab.
 
-## Quick start
+## Quick start (Windows)
 
-1. Install **uv** using the instructions for your operating system below.
-2. Open a terminal in the project folder—the folder containing `pyproject.toml` and `uv.lock`.
-3. Run `uv sync` to install the project’s Python version and packages.
-4. Open a lab notebook, select the project’s `.venv` Python kernel, and run the cells from top to bottom.
+1. Install **Visual Studio Code**, **Git**, and the **Python** and **Jupyter** VS Code extensions.
+2. Install **uv** in **PowerShell**.
+3. Clone this repository from GitHub using Git.
+4. In the project folder, run `uv sync` in PowerShell.
+5. Open a notebook in VS Code, select the project's `.venv` Python kernel, and run the cells.
 
-## 1. Install uv
+## 1. Install Visual Studio Code
+
+Download and install [Visual Studio Code](https://code.visualstudio.com/).
+
+## 2. Install Git
+
+Download and install [Git for Windows](https://git-scm.com/downloads/win). Git is a tool for downloading the course project and getting updates from GitHub.
+
+Open **PowerShell** (search for it in the Windows Start menu) and run:
+
+```powershell
+git --version
+```
+
+If Git is not recognized, close and reopen PowerShell after installation.
+
+## 3. Install Python and Jupyter extensions in VS Code
+
+Open VS Code and select **Extensions** on the left (or press `Ctrl+Shift+X`). Install both Microsoft extensions:
+
+- [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) — Python editing, running, debugging, and environment selection.
+- [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) — Open and run `.ipynb` notebooks cell by cell.
+
+**You do not normally need to install Python separately.** The `uv` tool will install the Python version needed by this project if it is missing.
+
+## 4. Install uv
 
 `uv` is a tool that sets up Python and installs the packages this course needs. You do not need to install Python packages one by one.
 
-### Windows
+### Windows (PowerShell)
 
-1. Open **PowerShell** from the Start menu.
-2. Copy and run:
+Open **PowerShell** and run:
 
-   ```powershell
-   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-   ```
+```powershell
+irm https://astral.sh/uv/install.ps1 | iex
+```
 
-3. Close PowerShell, open it again, and check the installation:
+Close PowerShell, open it again, and check:
 
-   ```powershell
-   uv --version
-   ```
+```powershell
+uv --version
+```
 
-### Linux
+### Linux (Terminal)
 
-1. Open a **Terminal**.
-2. Copy and run:
-
-   ```bash
-   curl -LsSf https://astral.sh/uv/install.sh | sh
-   ```
-
-   If `curl` is not installed, use:
-
-   ```bash
-   wget -qO- https://astral.sh/uv/install.sh | sh
-   ```
-
-3. Close the Terminal, open it again, and check the installation:
-
-   ```bash
-   uv --version
-   ```
-
-If the terminal says that `uv` cannot be found, close and reopen it once more. For more installation options, see the [official uv installation guide](https://docs.astral.sh/uv/getting-started/installation/).
-
-## 2. Set up this project
-
-Open the project folder in your editor, then choose **Terminal → New Terminal**. Make sure the terminal is in the main project folder: it should contain both `pyproject.toml` and `uv.lock`.
-
-You can check with:
-
-- **Windows PowerShell:** `dir pyproject.toml, uv.lock`
-- **Linux:** `ls pyproject.toml uv.lock`
-
-Now install everything the project needs:
+Open a terminal and run:
 
 ```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+If `curl` is not installed, use:
+
+```bash
+wget -qO- https://astral.sh/uv/install.sh | sh
+```
+
+Close and reopen the terminal, then run `uv --version`.
+
+For other installation options, see the [official uv installation guide](https://docs.astral.sh/uv/getting-started/installation/).
+
+## 5. Download the course project from GitHub
+
+On Windows, open **PowerShell** and run:
+
+```powershell
+cd $HOME
+git clone https://github.com/KramerElena/Agentic-Course.git
+cd Agentic-Course
+```
+
+These commands download the project and move into its folder. To check the project files, run:
+
+```powershell
+dir pyproject.toml, uv.lock
+```
+
+On Linux, run `git clone https://github.com/KramerElena/Agentic-Course.git` and then `cd Agentic-Course` in a terminal.
+
+## 6. Set up the project with uv sync
+
+From the **project folder** (the folder containing `pyproject.toml` and `uv.lock`), run:
+
+```powershell
 uv sync
 ```
 
-The first setup may take a few minutes and requires an internet connection. `uv sync` reads the project setup files, creates a private `.venv` environment, installs a compatible Python version if needed, and installs the course packages. This project requires Python 3.12 or newer.
+The first setup may take a few minutes and requires an internet connection. `uv sync` creates the `.venv` environment, installs a compatible Python version if needed, and installs the course packages. This project requires Python 3.12 or newer.
 
-To confirm Python is ready, run:
+Check the Python version:
 
-```bash
+```powershell
 uv run python --version
 ```
 
-Run `uv sync` again whenever the project dependencies are updated.
+Run `uv sync` again whenever the project dependencies are updated. **`uv sync` does not install uv itself**; you installed uv in step 4.
 
-## 3. Choose a lab
+## 7. Open the project in VS Code
 
-| Lab | Notebook | What you’ll do |
+In PowerShell, while you are inside the project folder, run:
+
+```powershell
+code .
+```
+
+If `code` is not recognized, open VS Code and choose **File → Open Folder**, then select the `Agentic-Course` folder.
+
+Press `Ctrl+Shift+P`, choose **Python: Select Interpreter**, and select the Python interpreter in `.venv` (on Windows, `.venv\Scripts\python.exe`).
+
+## 8. Choose a lab
+
+| Lab | Notebook | What you'll do |
 | --- | --- | --- |
 | Lab 1 — Local | `labs/1_lab1/1_lab1.ipynb` | Run the predefined workflow with Ollama. |
 | Lab 1 — Cloud | `labs/1_lab1/1_lab1-cloud.ipynb` | Run the workflow through OpenRouter. |
@@ -98,37 +141,51 @@ Run `uv sync` again whenever the project dependencies are updated.
 
 Read the setup notes at the top of each notebook before running it. Depending on the lab, you may need Ollama running or an API key stored in the project-root `.env` file. Keep API keys private; do not paste them into notebooks or commit them to the project.
 
-## 4. Run a lab in your editor
+## 9. Run a lab in VS Code
 
-1. Open one of the notebook files listed above.
-2. If prompted, choose a Python kernel. Select the environment named `.venv` (or similar) with Python 3.12 or newer.
-3. Run the notebook from the beginning. Choose **Run All** in the notebook toolbar, or click the first cell and press **Shift+Enter** to run cells one at a time.
+1. Open a `.ipynb` file from the table above.
+2. Click **Select Kernel** and choose the Python environment inside `.venv`.
+3. Click **Run All**, or run one cell at a time with **Shift+Enter**.
 
-If `.venv` is not listed as a kernel, run `uv sync` from the project folder and reopen the notebook. In VS Code or Cursor, install the Python and Jupyter extensions if the notebook controls are missing.
+If `.venv` is not listed, run `uv sync` again and reopen the notebook. The project environment must contain `ipykernel` to run notebooks.
 
-## 5. Run a notebook from the terminal
+## 10. Run a notebook from the terminal (optional)
 
-From the project folder, `uv run` can execute every cell in a notebook. For example:
+From the project folder, you can execute a notebook with `nbconvert` if it is included in the project's dependencies:
 
-```bash
+```powershell
 uv run python -m nbconvert --to notebook --execute labs/1_lab1/1_lab1.ipynb
 ```
 
-To execute another lab, use its notebook path:
+Other examples:
 
-```bash
+```powershell
 uv run python -m nbconvert --to notebook --execute labs/1_lab1/1_lab1-cloud.ipynb
 uv run python -m nbconvert --to notebook --execute labs/2_lab2/2_lab2.ipynb
 ```
 
-This command runs cells in order and writes a separate executed notebook ending in `.nbconvert.ipynb`; the original notebook is left unchanged. Complete the notebook’s setup steps first. Some cells contact a model server or a cloud API, so they may take time or use API credits.
+This creates a separate executed notebook ending in `.nbconvert.ipynb`. Complete the notebook's setup steps first. Some cells contact a model server or cloud API and may use API credits.
+
+## 11. Verify your setup
+
+Open **Terminal → New Terminal** in VS Code and make sure it is **PowerShell** on Windows. Run:
+
+```powershell
+git --version
+uv --version
+uv run python --version
+```
+
+Then open a course notebook and run its first cell.
 
 ## If something goes wrong
 
-- **`uv` is not recognized:** Close and reopen the terminal after installing it.
-- **The notebook cannot find a package or kernel:** Run `uv sync` from the folder containing `pyproject.toml`, then select `.venv` as the notebook kernel.
-- **A cell reports `NameError`:** Run the notebook from the first cell so the imports and setup cells run before the later cells.
-- **A model request fails:** Check that the notebook’s required model server is running and that its model/API key setup is complete.
+- **`git` or `uv` is not recognized:** Close and reopen PowerShell after installation.
+- **`code` is not recognized:** Open the folder through **File → Open Folder** in VS Code.
+- **The notebook cannot find a package or kernel:** Run `uv sync` from the folder containing `pyproject.toml`, then select `.venv` as the notebook kernel. Ask the instructor if `ipykernel` is missing from project dependencies.
+- **PowerShell blocks environment activation:** You do not need to activate `.venv` manually; use `uv run` and select the `.venv` interpreter in VS Code.
+- **A cell reports `NameError`:** Run the notebook from the first cell.
+- **A model request fails:** Check that the required model server is running and that its model/API key setup is complete.
 
 ---
 
